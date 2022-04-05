@@ -1,8 +1,10 @@
-
-
 const express = require("express");
 const mongoose = require("mongoose");
 const _ = require("lodash")
+require("dotenv").config()
+
+const password = process.env.PASSWORD 
+
 
 const app = express();
 
@@ -12,7 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-jeckdix:Jidex123@cluster0.d1etq.mongodb.net/todolistDB");
+mongoose.connect(`mongodb+srv://admin-jeckdix:${password}@cluster0.d1etq.mongodb.net/todolistDB`);
 
 const itemsSchema = new mongoose.Schema({ name: String });
 
